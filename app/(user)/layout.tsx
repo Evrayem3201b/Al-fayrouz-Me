@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
 import "../../app/globals.css";
-import { Inter } from "next/font/google";
+
 import { ThemeProvider } from "@/components/theme-provider";
 import NavigationBar from "@/components/Navigation";
 import localFont from "next/font/local";
@@ -11,16 +10,6 @@ const tajawal = localFont({
 const massri = localFont({
   src: "../../public/fonts/ElMessiri-VariableFont_wght.ttf",
 });
-
-export const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Al Fayrouz | الفيروز",
-  description: "الفيروز لقطع الغيار",
-};
 
 export default function RootLayout({
   children,

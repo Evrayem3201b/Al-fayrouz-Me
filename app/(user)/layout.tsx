@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../../app/globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import NavigationBar from "@/components/Navigation";
@@ -28,20 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning dir="rtl">
-      <body className={`antialiased mx-auto p-0 m-0`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NavigationBar />
-          <main dir="rtl" className={`relative mx-auto p-0 m-0`}>
-            {children}
-          </main>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <NavigationBar />
+      <main dir="rtl" className={`relative mx-auto p-0 m-0`}>
+        {children}
+      </main>
+    </ThemeProvider>
   );
 }

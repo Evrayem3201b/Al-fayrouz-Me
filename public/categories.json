@@ -1,0 +1,92 @@
+[
+  {
+    "category_en": "Plumbing & Gas Fittings",
+    "category_ar": "تجهيزات السباكة والغاز",
+    "image_url": "https://images.pexels.com/photos/4612486/pexels-photo-4612486.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Compressors & Cooling System Parts",
+    "category_ar": "كومبريسور وقطع أنظمة التبريد",
+    "image_url": " https://images.pexels.com/photos/1261731/pexels-photo-1261731.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Electrical Components",
+    "category_ar": "مكونات كهربائية",
+    "image_url": " https://images.pexels.com/photos/209232/pexels-photo-209232.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Motors & Mechanical Drives",
+    "category_ar": "محركات وأنظمة نقل الحركة",
+    "image_url": " https://images.pexels.com/photos/1905364/pexels-photo-1905364.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Belts & Pulleys",
+    "category_ar": "أحزمة وبكرات",
+    "image_url": " https://images.pexels.com/photos/3768905/pexels-photo-3768905.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Sealing & Insulation Materials",
+    "category_ar": "مواد العزل والختم",
+    "image_url": " https://images.pexels.com/photos/3810786/pexels-photo-3810786.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Thermal & Heating Components",
+    "category_ar": "عناصر التسخين والتحكم الحراري",
+    "image_url": " https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Fasteners & Hardware",
+    "category_ar": "مسامير وقطع تثبيت",
+    "image_url": " https://images.pexels.com/photos/261662/pexels-photo-261662.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Containers & Gas Cylinders",
+    "category_ar": "عبوات واسطوانات غاز",
+    "image_url": " https://images.pexels.com/photos/1309645/pexels-photo-1309645.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Control & Automation Modules",
+    "category_ar": "وحدات التحكم",
+    "image_url": " https://images.pexels.com/photos/3934656/pexels-photo-3934656.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Lighting & Lamps",
+    "category_ar": "إضاءة ومصابيح",
+    "image_url": " https://images.pexels.com/photos/1032950/pexels-photo-1032950.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Household Appliance Parts",
+    "category_ar": "قطع غيار الأجهزة المنزلية",
+    "image_url": " https://images.pexels.com/photos/5699636/pexels-photo-5699636.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Batteries & Power Sources",
+    "category_ar": "بطاريات ومصادر طاقة",
+    "image_url": " https://images.pexels.com/photos/209235/pexels-photo-209235.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Fans & Ventilation",
+    "category_ar": "مراوح وتهوية",
+    "image_url": " https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Pumps & Flow Systems",
+    "category_ar": "المضخات وأنظمة التدفق",
+    "image_url": " https://images.pexels.com/photos/1261729/pexels-photo-1261729.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Tools & Workshop Supplies",
+    "category_ar": "أدوات ولوازم الورشة",
+    "image_url": " https://images.pexels.com/photos/3768905/pexels-photo-3768905.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Sensors & Switches",
+    "category_ar": "مستشعرات ومفاتيح",
+    "image_url": " https://images.pexels.com/photos/3934656/pexels-photo-3934656.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "category_en": "Miscellaneous",
+    "category_ar": "اخرى",
+    "image_url": " https://images.pexels.com/photos/697511/pexels-photo-697511.jpeg?auto=compress&cs=tinysrgb&w=600"
+  }
+]

@@ -4,14 +4,19 @@ export default {
   type: "document",
   fields: [
     {
-      name: "category",
+      name: "category_en",
+      title: "Category",
+      type: "string",
+    },
+    {
+      name: "category_ar",
       title: "الصنف",
       type: "string",
     },
   ],
   preview: {
     select: {
-      title: "category", // shows and enables search by category name
+      title: "category_en", // shows and enables search by category name
     },
   },
 };

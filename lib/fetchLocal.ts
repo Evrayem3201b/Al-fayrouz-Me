@@ -1,3 +1,5 @@
+import { client } from "@/lib/sanity";
+
 type categoryType = {
   category_en: string;
   category_ar: string;
@@ -7,31 +9,31 @@ type testimonialType = {
   name: string;
   logoUrl: string;
 };
-const baseURL = "http://localhost:3000";
+
+const catQuery = `* [_type == "categories"]{
+  category_en,
+    category_ar
+}`;
+const testQuery = `* [_type == "testimonials"]{
+  name,
+    logoUrl
+}`;
 
 export async function getCategories(): Promise<categoryType[]> {
-  // const res = await fetch("./categories.json");
-  // const data = await res.json();
-  const res = await fetch(`${baseURL}/categories.json`);
-
   console.log("Fetched categories");
 
-  return res.json().then((data) => {
-    console.log("Parsed categories data");
-    return data as categoryType[];
-  });
+  const data = await client.fetch(catQuery);
+  console.log("Fetched data:", data);
+  return data;
 }
 
 export async function getTestimonials(): Promise<testimonialType[]> {
   // const res = await fetch("./testimonials.json");
   // const data = await res.json();
 
-  const res = await fetch(`${baseURL}/testimonials.json`);
-
   console.log("Fetched testimonials");
 
-  return res.json().then((data) => {
-    console.log("Parsed testimonials data");
-    return data as testimonialType[];
-  });
+  const data = await client.fetch(testQuery);
+  console.log("Fetched data:", data);
+  return data;
 }

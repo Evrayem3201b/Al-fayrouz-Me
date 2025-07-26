@@ -19,31 +19,6 @@ const navigationLinks = [
   { href: "/electricity", label: "ادوات كهربائية" },
 ];
 
-const subNavigationLinks = [
-  {
-    label: "جميع الاصناف",
-    submenu: true,
-    type: "description",
-    items: [
-      {
-        href: "#",
-        label: "احجار",
-        description: "",
-      },
-      {
-        href: "#",
-        label: "شاشات",
-        description: "",
-      },
-      {
-        href: "#",
-        label: "مواتير",
-        description: "",
-      },
-    ],
-  },
-];
-
 export default function Component() {
   const [menuOpen, setMenuState] = useState(false);
   const toggleMenu = () => {
@@ -53,6 +28,7 @@ export default function Component() {
   return (
     <header
       className={`${tajawal.className} flex flex-col border-b px-4 md:px-6 max-w-4xl mx-auto`}
+      dir="rtl"
     >
       <div className="flex h-16 items-center justify-between gap-4">
         {/* Left side */}

@@ -5,6 +5,9 @@ export const structure: StructureResolver = (S) =>
     .title("Admin Panel")
     .items([
       S.listItem()
+        .title("Testimonials")
+        .child(S.documentTypeList("testimonials").title("Testimonials")),
+      S.listItem()
         .title("Dashboard")
         .child(
           S.documentTypeList("categories")

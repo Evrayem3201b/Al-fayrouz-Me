@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Original hero
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+import { ArrowRightIcon, SearchIcon } from "lucide-react";
+import { Input } from "./ui/input";
+import Form from "next/form";
+import { getCategories } from "@/lib/fetchLocal";
+import { Button } from "./ui/button";
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+export default async function Hero() {
+  return (
+    <section className="section-main pb-20 mx-auto flex flex-col items-center gap-6 pt-6 overflow-hidden max-md:px-10 px-5">
+      <h1 className="text-4xl font-black text-center">
+        شركة <span className="text-primary">الفيروز</span> لقطع الغيار و المعدات
+      </h1>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+      <Form
+        className="flex flex-col gap-4 items-center bg-[#252525] text-white w-full py-12 px-6 rounded-xl shadow-lg"
+        dir="ltr"
+        action={"/search"}
+      >
+        <h2 className="text-2xl font-semibold">ابحث عن القطعة</h2>
+        <div className="relative w-full max-w-md">
+          <button
+            className="text-gray-400 hover:text-white focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-all outline-none focus:z-10 focus-visible:ring-[2px]"
+            aria-label="Submit search"
+            type="submit"
+          >
+            <ArrowRightIcon size={16} />
+          </button>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+          <Input
+            className="peer ps-9 pe-9 bg-white text-black placeholder:text-gray-500 border border-gray-300 focus:border-primary focus:ring-primary rounded-md"
+            placeholder="ادخل رقم القطعة أو الموديل أو نوع المعدات..."
+            type="search"
+            name="query"
+          />
 
-## Learn More
+          <button
+            type="submit"
+            className="text-gray-400 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50"
+          >
+            <SearchIcon size={16} />
+          </button>
+        </div>
+        <Button variant={"default"} className="mt-4">
+          البحث في الكاتالوج
+        </Button>
+      </Form>
+    </section>
+  );
+}
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```

@@ -1,45 +1,92 @@
-import { ArrowRightIcon, SearchIcon } from "lucide-react";
-import { Input } from "./ui/input";
-import Form from "next/form";
-import { getCategories } from "@/lib/fetchLocal";
+"use client";
+import { Search } from "lucide-react";
 
-export default async function Hero() {
+export default function SplitWithScreenshot() {
   return (
-    <section className="section-main pb-20 mx-auto flex flex-col items-center gap-6 pt-6 overflow-hidden max-md:px-10 px-5">
-      <h1 className="text-4xl font-black text-center">
-        شركة <span className="text-primary">الفيروز</span> لقطع الغيار و المعدات
-      </h1>
-
-      <Form
-        className="flex flex-col gap-4 items-center bg-[#252525] text-white w-full py-12 px-6 rounded-xl shadow-lg"
-        dir="ltr"
-        action={"/search"}
+    <div dir="rtl" className="relative isolate overflow-hidden bg-background">
+      <svg
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-border"
       >
-        <h2 className="text-2xl font-semibold">ابحث عن القطعة</h2>
-        <div className="relative w-full max-w-md">
-          <button
-            className="text-gray-400 hover:text-white focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-all outline-none focus:z-10 focus-visible:ring-[2px]"
-            aria-label="Submit search"
-            type="submit"
+        <defs>
+          <pattern
+            x="50%"
+            y={-1}
+            id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
+            width={200}
+            height={200}
+            patternUnits="userSpaceOnUse"
           >
-            <ArrowRightIcon size={16} />
-          </button>
-
-          <Input
-            className="peer ps-9 pe-9 bg-white text-black placeholder:text-gray-500 border border-gray-300 focus:border-primary focus:ring-primary rounded-md"
-            placeholder="بحث"
-            type="search"
-            name="query"
-          />
-
-          <button
-            type="submit"
-            className="text-gray-400 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50"
-          >
-            <SearchIcon size={16} />
-          </button>
+            <path d="M.5 200V.5H200" fill="none" />
+          </pattern>
+        </defs>
+        <rect
+          fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
+          width="100%"
+          height="100%"
+          strokeWidth={0}
+        />
+      </svg>
+      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:items-center lg:px-8 lg:py-40">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:shrink-0 lg:pt-8 prose lg:prose-xl">
+          <h1 className="mt-20 text-5xl font-semibold tracking-tight !text-[#374151] sm:text-7xl">
+            قطع غيار احترافية لمعدات المطابخ والمغاسل الصناعية
+          </h1>
+          <p className="mt-8 text-lg font-medium !text-muted-foreground sm:text-xl sm:leading-8">
+            قطع أصلية وبديلة لأفران ومغاسل وغسالات وثلاجات المطاعم. شحن سريع.
+            دعم فني متخصص.
+          </p>
+          <div className="not-prose mt-10 flex items-center gap-x-6">
+            <a
+              href="#"
+              className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              ابحث عن قطعة غيار
+            </a>
+            <a
+              href="#"
+              className="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-secondary/80 no-underline"
+            >
+              تصفح الكتالوج
+            </a>
+          </div>
+          <div className="not-prose relative mt-16 max-w-lg">
+            <label htmlFor="search-part" className="sr-only">
+              بحث
+            </label>
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <Search
+                  className="size-5 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              </div>
+              <input
+                id="search-part"
+                name="search-part"
+                className="block w-full rounded-md border-0 bg-white py-4 pl-10 pr-3 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-accent sm:text-lg sm:leading-6"
+                placeholder="ادخل رقم القطعة أو الموديل أو نوع المعدات..."
+                type="search"
+                dir="rtl"
+              />
+            </div>
+          </div>
         </div>
-      </Form>
-    </section>
+        <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32 ">
+          <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none max-lg:hidden">
+            <div className="-m-2 rounded-xl  bg-secondary/80 p-2 ring-1 ring-inset ring-border lg:-m-4 lg:rounded-2xl lg:p-4">
+              <img
+                alt="مجموعة من قطع غيار المعدات الصناعية مثل المضخات والمحركات ولوحات التحكم"
+                src="/images/repair_parts.jpg"
+                width={1600}
+                height={948.6}
+                className="w-auto rounded-md shadow-2xl ring-1 ring-border bg-center"
+                dir="rtl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

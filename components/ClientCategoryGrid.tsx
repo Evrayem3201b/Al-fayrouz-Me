@@ -65,7 +65,7 @@ export default function ClientCategoryGrid({
       <Button
         variant={"default"}
         onClick={() => setShowMore((prev) => !prev)}
-        className="text-lg font-semibold flex items-center gap-2 cursor-pointer pt-1.5  hover:underline min-[743px]:hidden"
+        className="text-lg font-semibold flex items-center bg-accent gap-2 cursor-pointer pt-1.5  hover:underline min-[743px]:hidden"
       >
         {showMore ? "عرض أقل" : "عرض المزيد"}
         {showMore ? <ArrowUp size={16} /> : <ArrowDown size={16} />}

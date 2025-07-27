@@ -96,7 +96,7 @@ export default function ClientTestimonialsSlider({
                   leaveTo="opacity-0 translate-x-4"
                   beforeEnter={heightFix}
                 >
-                  <div className="text-lg text-foreground md:text-xl font-bold">
+                  <div className="text-lg text-background md:text-xl font-bold">
                     {item.name}
                   </div>
                 </Transition>

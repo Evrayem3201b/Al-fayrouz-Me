@@ -1,6 +1,6 @@
 export default {
   name: "testimonials",
-  title: "جميع الاصناف",
+  title: "الشهادات",
   type: "document",
   fields: [
     {

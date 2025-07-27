@@ -1,36 +1,30 @@
+// app/components/Testimonials.tsx
 import { getTestimonials } from "@/lib/fetchLocal";
-import Image from "next/image";
+import ClientTestimonialsSlider from "./ClientTestimonialsSlider";
+import ClientTestimonialsGrid from "./ClientTestimonialsGrid";
 
 export default async function Testimonials() {
   const testimonials = await getTestimonials();
-  let animationDuration = 20; // seconds
+
   return (
-    <section
+    <div
       dir="rtl"
-      className="section-main flex flex-col items-center gap-6 pt-6 overflow-hidden bg-white text-[#252525] mx-auto max-md:px-4 pb-20"
+      className="relative w-full max-w-7xl mx-auto px-4 md:px-8 py-20 overflow-hidden h-full bg-background"
     >
-      <h2 className="text-2xl font-bold pb-5">عملاء اكدوا على جودتنا</h2>
-      {/* max-xs:grid-cols-1 grid-cols-2 min-[743px]:grid-cols-3 lg:grid-cols-4 gap-6 max-w-screen-xl  */}
-      <div className="marquee-wrapper place-items-center relative mx-auto px-4 w-full h-[100px] overflow-hidden">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className={`w-[300px] h-[100px] marquee-item left-full absolute px-24`}
-            style={{
-              animation: `marquee ${animationDuration}s calc(${animationDuration}s / ${testimonials.length} * (${testimonials.length} - ${index + 1}) * -1) linear infinite`,
-            }}
-          >
-            <Image
-              src={`${testimonial.logoUrl}`}
-              alt={`${testimonial.name}`}
-              width={400}
-              height={300}
-              className="w-full h-full object-contain"
-              loading="lazy"
-            />
-          </div>
-        ))}
+      <div className="pb-12 text-center">
+        <h1 className="pt-4 font-bold text-[#252525] text-3xl md:text-4xl">
+          موثوق من قبل الفنادق الاكثر شهرة
+        </h1>
       </div>
-    </section>
+
+      <div className="relative">
+        <ClientTestimonialsSlider testimonials={testimonials} />
+        <div className="h-full max-h-screen md:max-h-none overflow-hidden w-full bg-primary opacity-10 [mask-image:radial-gradient(circle_at_center,transparent_10%,white_99%)]">
+          <ClientTestimonialsGrid testimonials={testimonials} />
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 inset-x-0 h-40 w-full bg-gradient-to-t from-background to-transparent"></div>
+    </div>
   );
 }

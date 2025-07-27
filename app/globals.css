@@ -27,6 +27,10 @@
   }
 }
 
+.transform-center {
+  transform: translate(50%, -17%);
+}
+
 @keyframes marquee {
   to {
     left: -430px;
@@ -203,6 +207,9 @@ body {
 }
 
 section {
+  font-family: "massri", "massri Fallback";
+}
+main {
   font-family: "massri", "massri Fallback";
 }
 

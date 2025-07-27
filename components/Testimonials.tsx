@@ -2,7 +2,7 @@
 import { getTestimonials } from "@/lib/fetchLocal";
 import ClientTestimonialsSlider from "./ClientTestimonialsSlider";
 import ClientTestimonialsGrid from "./ClientTestimonialsGrid";
-
+export const revalidate = 30; // revalidate at most every hour
 export default async function Testimonials() {
   const testimonials = await getTestimonials();
 

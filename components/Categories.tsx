@@ -1,6 +1,8 @@
 import { getCategories } from "@/lib/fetchLocal";
 import ClientCategoryGrid from "./ClientCategoryGrid";
 
+export const revalidate = 30; // revalidate at most every hour
+
 export default async function Categories() {
   const categories = await getCategories();
 

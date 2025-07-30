@@ -1,17 +1,16 @@
-// app/search/page.tsx
 import SearchComp from "@/components/SearchComp";
 import { Button } from "@/components/ui/button";
-import { client } from "@/lib/sanity"; // you must set this up
+import { client } from "@/lib/sanity";
 import { groq } from "next-sanity";
 
-export const dynamic = "force-dynamic"; // to make SSR always run
+export const dynamic = "force-dynamic";
 
 export default async function SearchPage({
   searchParams,
 }: {
   searchParams: { query?: string };
 }) {
-  const query = (await searchParams.query?.trim()) || "";
+  const query = searchParams.query?.trim() || "";
 
   if (!query)
     return <p className="text-center mt-10">الرجاء كتابة كلمة للبحث</p>;
@@ -20,7 +19,7 @@ export default async function SearchPage({
     groq`*[_type == "products" && (
       typeArabic match $q || typeEnglish match $q
     )]{ _id, typeArabic, typeEnglish }`,
-    { q: `*${query}*` } // GROQ wildcard search
+    { q: `*${query}*` }
   );
 
   return (

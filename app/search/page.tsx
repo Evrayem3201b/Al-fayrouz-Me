@@ -4,13 +4,13 @@ import { client } from "@/lib/sanity";
 import { groq } from "next-sanity";
 
 export const dynamic = "force-dynamic";
-
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams?: Record<string, string | string[] | undefined>;
 }) {
-  const query = searchParams.query?.trim() || "";
+  const queryRaw = searchParams?.query;
+  const query = typeof queryRaw === "string" ? queryRaw.trim() : "";
 
   if (!query)
     return <p className="text-center mt-10">الرجاء كتابة كلمة للبحث</p>;

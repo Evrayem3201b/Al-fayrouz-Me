@@ -45,7 +45,7 @@ export default function ClientCategoryGrid({
             >
               <div className="w-full h-[140px] border-b">
                 <Image
-                  src={`/images/png/${category.category_en}.png`}
+                  src={`${`/images/png/${category.category_en}.png` ? `/images/png/${category.category_en}.png` : "/images/error-img.jpg"}`}
                   alt={category.category_en}
                   width={300}
                   height={140}

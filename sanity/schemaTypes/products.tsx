@@ -20,10 +20,10 @@ export default {
       type: "string",
       title: "النوع بالعربي",
     },
-    {
-      name: "measurement",
-      type: "string",
-      title: "القياس",
-    },
   ],
+  preview: {
+    select: {
+      title: "typeArabic",
+    },
+  },
 };

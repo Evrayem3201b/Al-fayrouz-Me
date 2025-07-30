@@ -37,3 +37,11 @@ export async function getTestimonials(): Promise<testimonialType[]> {
   console.log("Fetched data:", data);
   return data;
 }
+export async function getData(query: string) {
+  // const res = await fetch("./testimonials.json");
+  // const data = await res.json();
+
+  const data = await client.fetch(query);
+  console.log("Fetched data:", data);
+  return data;
+}

@@ -1,33 +1,50 @@
-import { useId } from "react";
-import { ArrowRightIcon, SearchIcon } from "lucide-react";
+// app/components/SearchBar.tsx
+"use client";
 
-import { Input } from "@/components/ui/input";
+import { Search, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function Component({ breakpoint, inputStyles }: any) {
-  const id = useId();
+export default function SearchBar({ styling }: any) {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`/search?query=${encodeURIComponent(query)}`);
+    }
+  };
+
   return (
-    <div
-      className={`*:not-first:mt-2 w-auto bg-background ${breakpoint}`}
-      dir="ltr"
+    <form
+      onSubmit={handleSubmit}
+      className={`not-prose relative max-w-lg ${styling}`}
     >
-      <div className={`relative ${inputStyles}`}>
-        <button
-          className="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-          aria-label="Submit search"
-          type="submit"
-        >
-          <ArrowRightIcon size={16} aria-hidden="true" />
-        </button>
-        <Input
-          id={id}
-          className={`peer ps-9 pe-9`}
-          placeholder="بحث"
-          type="search"
-        />
-        <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
-          <SearchIcon size={16} />
+      <label htmlFor="searchBar" className="sr-only">
+        بحث
+      </label>
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <Search className="size-5 text-muted-foreground" aria-hidden="true" />
         </div>
+        <input
+          id="searchBar"
+          name="query"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="block w-full rounded-md border-0 bg-white py-4 px-10 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-accent sm:text-lg sm:leading-6"
+          placeholder="ادخل رقم القطعة أو الموديل أو نوع المعدة..."
+          type="search"
+          dir="rtl"
+        />
+        <button
+          type="submit"
+          className="absolute inset-y-0 right-0 flex items-center pr-3"
+        >
+          <ArrowRight className="size-5 text-muted-foreground" />
+        </button>
       </div>
-    </div>
+    </form>
   );
 }

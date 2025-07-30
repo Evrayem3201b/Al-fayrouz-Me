@@ -1,10 +1,22 @@
 import { getCategories } from "@/lib/fetchLocal";
 import ClientCategoryGrid from "./ClientCategoryGrid";
 
-export const revalidate = 30; // revalidate at most every hour
+export const revalidate = 30;
 
 export default async function Categories() {
-  const categories = await getCategories();
+  let categories = [];
+
+  try {
+    categories = await getCategories();
+    console.log("Fetched categories");
+  } catch (error) {
+    console.error("Failed to fetch categories:", error);
+    return (
+      <section className="text-center text-red-500 py-10">
+        فشل تحميل الأصناف. الرجاء المحاولة لاحقًا.
+      </section>
+    );
+  }
 
   return (
     <section

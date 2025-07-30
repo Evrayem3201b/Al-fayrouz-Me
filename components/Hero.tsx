@@ -1,5 +1,9 @@
 "use client";
+import { ArrowRight } from "lucide-react";
 import { Search } from "lucide-react";
+import Form from "next/form";
+import Link from "next/link";
+import SearchComp from "./SearchComp";
 
 export default function SplitWithScreenshot() {
   return (
@@ -36,40 +40,20 @@ export default function SplitWithScreenshot() {
             قطع أصلية وبديلة لأفران ومغاسل وغسالات وثلاجات المطاعم. شحن سريع.
             دعم فني متخصص.
           </p>
+          <SearchComp styling="mt-15" />
           <div className="not-prose mt-10 flex items-center gap-x-6">
-            <a
-              href="#"
+            <Link
+              href="/catalogue"
               className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              ابحث عن قطعة غيار
-            </a>
-            <a
+              تصفح الكتالوج
+            </Link>
+            <Link
               href="#"
               className="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-secondary/80 no-underline"
             >
-              تصفح الكتالوج
-            </a>
-          </div>
-          <div className="not-prose relative mt-16 max-w-lg">
-            <label htmlFor="search-part" className="sr-only">
-              بحث
-            </label>
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <Search
-                  className="size-5 text-muted-foreground"
-                  aria-hidden="true"
-                />
-              </div>
-              <input
-                id="search-part"
-                name="search-part"
-                className="block w-full rounded-md border-0 bg-white py-4 pl-10 pr-3 text-foreground shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-accent sm:text-lg sm:leading-6"
-                placeholder="ادخل رقم القطعة أو الموديل أو نوع المعدات..."
-                type="search"
-                dir="rtl"
-              />
-            </div>
+              ابحث عن قطعة غيار
+            </Link>
           </div>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32 ">
@@ -82,6 +66,7 @@ export default function SplitWithScreenshot() {
                 height={948.6}
                 className="w-auto rounded-md shadow-2xl ring-1 ring-border bg-center"
                 dir="rtl"
+                loading="lazy"
               />
             </div>
           </div>

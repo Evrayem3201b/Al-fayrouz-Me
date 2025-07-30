@@ -9,6 +9,7 @@
   --breakpoint-Mmd: 743px;
   --shadow-light: 0px 0px 14px -10px #0000004f;
   --animate-marquee: marquee 20s linear infinite;
+  --height-noNav: calc(100dvh - 114px);
 }
 @layer utilities {
   /* Container holds the scroll area */

@@ -1,10 +1,23 @@
-// app/components/Testimonials.tsx
 import { getTestimonials } from "@/lib/fetchLocal";
 import ClientTestimonialsSlider from "./ClientTestimonialsSlider";
 import ClientTestimonialsGrid from "./ClientTestimonialsGrid";
-export const revalidate = 30; // revalidate at most every hour
+
+export const revalidate = 30;
+
 export default async function Testimonials() {
-  const testimonials = await getTestimonials();
+  let testimonials = [];
+
+  try {
+    testimonials = await getTestimonials();
+    console.log("Fetched testimonials");
+  } catch (error) {
+    console.error("Failed to fetch testimonials:", error);
+    return (
+      <div className="text-center text-red-500 py-10">
+        فشل تحميل المراجعات. الرجاء المحاولة لاحقًا.
+      </div>
+    );
+  }
 
   return (
     <div

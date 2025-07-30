@@ -13,10 +13,24 @@ export default {
       title: "الصنف",
       type: "string",
     },
+    {
+      name: "catImg",
+      title: "الصورة",
+      type: "image",
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "category_en",
+        maxLength: 200,
+      },
+    },
   ],
   preview: {
     select: {
-      title: "category_en", // shows and enables search by category name
+      title: "category_ar",
     },
   },
 };

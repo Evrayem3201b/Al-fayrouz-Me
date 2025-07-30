@@ -4,7 +4,6 @@ import { Clock, Mail, Phone } from "lucide-react";
 import { useId } from "react";
 import Link from "next/link";
 import Form from "next/form";
-import emailjs from "@emailjs/browser";
 
 export default function ContactUs() {
   function handleWhatsappClick() {
@@ -46,14 +45,36 @@ export default function ContactUs() {
       });
     }
   }
-  function handleEmailClick() {
-    const form = document.querySelector("form");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-      });
-    }
+  function handleEmailClick(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+
+    const name =
+      (document.querySelector("#name") as HTMLInputElement)?.value || "";
+    const company =
+      (document.querySelector("#company") as HTMLInputElement)?.value || "";
+    const phone =
+      (document.querySelector("#phone") as HTMLInputElement)?.value || "";
+    const email =
+      (document.querySelector("#email") as HTMLInputElement)?.value || ""; // ✅ this is what you're asking for
+    const equipmentModel =
+      (document.querySelector("#equipment-model") as HTMLInputElement)?.value ||
+      "";
+    const partNeeded =
+      (document.querySelector("#part-needed") as HTMLInputElement)?.value || "";
+    const message =
+      (document.querySelector("#message") as HTMLTextAreaElement)?.value || "";
+
+    const payload = {
+      name,
+      company,
+      phone,
+      email, // ✅ dynamically from user input
+      equipmentModel,
+      partNeeded,
+      message,
+    };
   }
+
   return (
     <div
       dir="ltr"
@@ -82,10 +103,10 @@ export default function ContactUs() {
             <div>
               <p className="font-semibold text-foreground">البريد الإلكتروني</p>
               <Link
-                href={"mailto:al-fayrouz804@gmail.com"}
+                href={"mailto:alfayrouz804@gmail.com"}
                 className="text-muted-foreground"
               >
-                al-fayrouz804@gmail.com
+                alfayrouz804@gmail.com
               </Link>
             </div>
             <Mail className="h-6 w-6 text-accent" />
@@ -208,14 +229,12 @@ export default function ContactUs() {
         </div>
         <button
           className="text-white relative z-10 flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/90"
-          type="submit"
           onClick={handleWhatsappClick}
         >
           إرسال الطلب بواسطة الواتساب
         </button>
         <button
           className="text-white relative z-10 flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/90"
-          type="submit"
           onClick={handleEmailClick}
         >
           إرسال الطلب بواسطة البريد الإلكتروني

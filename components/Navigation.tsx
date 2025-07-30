@@ -14,12 +14,11 @@ const tajawal = localFont({
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "الرئيسية" },
-  { href: "/air-condition", label: "تبريد و تكيف" },
-  { href: "/kitchen", label: "معدات مطابخ" },
-  { href: "/electricity", label: "ادوات كهربائية" },
+  { href: "/catalogue", label: "الكاتالوج" },
+  { href: "/search", label: "البحث" },
 ];
 
-export default function Component() {
+export default function NavigationBar() {
   const [menuOpen, setMenuState] = useState(false);
   const toggleMenu = () => {
     setMenuState(!menuOpen);

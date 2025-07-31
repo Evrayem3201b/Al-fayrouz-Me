@@ -49,16 +49,16 @@ export default async function SearchPage({
                   key={product._id}
                   className="flex flex-row gap-2 items-center justify-between border p-4 rounded shadow"
                 >
-                  <Image
-                    src={
-                      product.productImg
-                        ? urlFor(product.productImg).url()
-                        : "/images/error-img.jpg"
-                    }
-                    alt={product.typeEnglish}
-                    width={100}
-                    height={100}
-                  />
+                  {product.productImg ? (
+                    <Image
+                      src={urlFor(product.productImg).url()}
+                      alt={product.typeEnglish}
+                      width={100}
+                      height={100}
+                    />
+                  ) : (
+                    ""
+                  )}
                   <p className="font-bold">{product.typeArabic}</p>
                   <p className="text-sm text-gray-600">{product.typeEnglish}</p>
                   <Button>اضف الى عرض السعر</Button>

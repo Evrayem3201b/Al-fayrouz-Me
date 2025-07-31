@@ -45,35 +45,6 @@ export default function ContactUs() {
       });
     }
   }
-  function handleEmailClick(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-
-    const name =
-      (document.querySelector("#name") as HTMLInputElement)?.value || "";
-    const company =
-      (document.querySelector("#company") as HTMLInputElement)?.value || "";
-    const phone =
-      (document.querySelector("#phone") as HTMLInputElement)?.value || "";
-    const email =
-      (document.querySelector("#email") as HTMLInputElement)?.value || ""; // ✅ this is what you're asking for
-    const equipmentModel =
-      (document.querySelector("#equipment-model") as HTMLInputElement)?.value ||
-      "";
-    const partNeeded =
-      (document.querySelector("#part-needed") as HTMLInputElement)?.value || "";
-    const message =
-      (document.querySelector("#message") as HTMLTextAreaElement)?.value || "";
-
-    const payload = {
-      name,
-      company,
-      phone,
-      email, // ✅ dynamically from user input
-      equipmentModel,
-      partNeeded,
-      message,
-    };
-  }
 
   return (
     <div
@@ -233,12 +204,12 @@ export default function ContactUs() {
         >
           إرسال الطلب بواسطة الواتساب
         </button>
-        <button
+        {/* <button
           className="text-white relative z-10 flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/90"
           onClick={handleEmailClick}
         >
           إرسال الطلب بواسطة البريد الإلكتروني
-        </button>
+        </button> */}
       </Form>
     </div>
   );

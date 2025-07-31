@@ -14,7 +14,7 @@ const tajawal = localFont({
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "الرئيسية" },
-  { href: "/catalogue", label: "الكاتالوج" },
+  { href: "/catalogue/page/1", label: "الكاتالوج" },
   { href: "/search", label: "البحث" },
 ];
 
@@ -51,7 +51,7 @@ export default function NavigationBar() {
               </ul>
             </nav>
             <nav
-              className={`${menuOpen ? "flex" : "hidden"} gap-3 text-lg top-[55px] left-0 ml-[11px] flex-col z-10 absolute bg-background border p-4 rounded-md`}
+              className={`${menuOpen ? "flex" : "hidden"} z-30 gap-3 text-lg top-[55px] left-0 ml-[11px] flex-col absolute bg-background border p-4 rounded-md`}
             >
               <ul className="gap-3">
                 {navigationLinks.map((link, index) => (
@@ -73,10 +73,6 @@ export default function NavigationBar() {
             </nav>
             <MenuIcon onClick={toggleMenu} size={22} className="md:hidden" />
           </div>
-        </div>
-        {/* Right side */}
-        <div className="flex items-center gap-2 max-md:hidden">
-          <ModeToggle />
         </div>
       </div>
       {/*       <DropNav /> */}

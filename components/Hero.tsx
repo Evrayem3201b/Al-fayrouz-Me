@@ -1,7 +1,4 @@
 "use client";
-import { ArrowRight } from "lucide-react";
-import { Search } from "lucide-react";
-import Form from "next/form";
 import Link from "next/link";
 import SearchComp from "./SearchComp";
 
@@ -31,7 +28,7 @@ export default function SplitWithScreenshot() {
           strokeWidth={0}
         />
       </svg>
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:items-center lg:px-8 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 pt-10 pb-19 sm:pb-32 lg:flex lg:items-center lg:px-8 lg:py-40">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:shrink-0 lg:pt-8 prose lg:prose-xl">
           <h1 className="mt-20 text-5xl font-semibold tracking-tight !text-[#374151] sm:text-7xl">
             قطع غيار احترافية لمعدات المطابخ والمغاسل الصناعية
@@ -40,8 +37,8 @@ export default function SplitWithScreenshot() {
             قطع أصلية وبديلة لأفران ومغاسل وغسالات وثلاجات المطاعم. شحن سريع.
             دعم فني متخصص.
           </p>
-          <SearchComp styling="mt-15" />
-          <div className="not-prose mt-10 flex items-center gap-x-6">
+          <SearchComp styling="mt-11" />
+          <div className="not-prose mt-5 flex items-center gap-x-6">
             <Link
               href="/catalogue"
               className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -49,7 +46,7 @@ export default function SplitWithScreenshot() {
               تصفح الكتالوج
             </Link>
             <Link
-              href="#"
+              href="#searchBar"
               className="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-secondary/80 no-underline"
             >
               ابحث عن قطعة غيار

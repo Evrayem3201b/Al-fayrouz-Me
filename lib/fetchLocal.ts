@@ -3,7 +3,7 @@ import { client } from "@/lib/sanity";
 type categoryType = {
   category_en: string;
   category_ar: string;
-  image_url?: string;
+  catImg?: string;
 };
 type testimonialType = {
   name: string;
@@ -12,7 +12,8 @@ type testimonialType = {
 
 const catQuery = `* [_type == "categories"]{
   category_en,
-    category_ar
+    category_ar,
+    imgCat
 }`;
 const testQuery = `* [_type == "testimonials"]{
   name,
@@ -25,6 +26,25 @@ export async function getCategories(): Promise<categoryType[]> {
   const data = await client.fetch(catQuery);
   console.log("Fetched data:", data);
   return data;
+}
+
+export async function getPaginatedCategories(limit = 10, offset = 0) {
+  const query = `*[_type == "categories"] | order(_createdAt desc) [${offset}...${offset + limit}]{
+    _id,
+    category_en,
+    category_ar,
+    "products": *[_type == "products" && references(^._id)]{
+      _id,
+      typeEnglish,
+      typeArabic
+    }
+  }`;
+  return await getData(query);
+}
+
+export async function getTotalCategoryCount() {
+  const query = 'count(*[_type == "categories"])';
+  return await getData(query);
 }
 
 export async function getTestimonials(): Promise<testimonialType[]> {

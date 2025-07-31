@@ -20,6 +20,11 @@ export default {
       type: "string",
       title: "النوع بالعربي",
     },
+    {
+      name: "productImg",
+      type: "image",
+      title: "الصورة",
+    },
   ],
   preview: {
     select: {

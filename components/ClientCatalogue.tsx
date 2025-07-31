@@ -1,10 +1,12 @@
 "use client";
-import { ArrowUp, ArrowDown } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
-import Link from "next/link";
 
-type categotiesType = {
+import { ArrowUp, PlusIcon, MinusIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import Image from "next/image";
+
+type CategoryType = {
   _id: string;
   category_en: string;
   category_ar: string;
@@ -12,96 +14,117 @@ type categotiesType = {
     _id: string;
     typeEnglish: string;
     typeArabic: string;
+    productImg: string;
   }[];
 };
+
 export default function ClientCatalogue({
   catalogueItems,
+  currentPage,
+  totalPages,
 }: {
-  catalogueItems: categotiesType[];
+  catalogueItems: CategoryType[];
+  currentPage: number;
+  totalPages: number;
 }) {
   const [isVisible, setIsVisible] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY > 100) {
-      // Show button after scrolling down 100px
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
+  const handleScroll = () => setIsVisible(window.scrollY > 100);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const [showMore, setShowMore] = useState(false);
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      // Check if running in the browser
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth", // For smooth scrolling animation
-      });
-    }
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const [addedItems, setAddedItems] = useState<Record<string, boolean>>({});
+
+  const handleAdd = (id: string) => {
+    setAddedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
   };
+
   return (
     <>
-      <div className="flex flex-col">
-        <h2 className="text-2xl text-[#252525]">الاصناف</h2>
+      <h2 className="text-2xl font-bold mb-6 text-[#252525] dark:text-white">
+        الاصناف
+      </h2>
 
-        <div
-          className={`flex flex-wrap gap-2 pb-0  ${showMore ? "h-full" : "h-[218px]"} overflow-hidden`}
-        >
-          {catalogueItems.map((category) => (
-            <Button className="" key={category._id}>
-              <Link href={`#${category._id}`}>{category.category_ar}</Link>
-            </Button>
-          ))}
-        </div>
-        <div className="pt-4 pb-20">
-          <Button
-            variant={"ghost"}
-            onClick={() => setShowMore((prev) => !prev)}
-            className="text-lg font-semibold flex items-center bg-secondary gap-2 cursor-pointer pt-1.5  hover:underline min-[743px]:hidden"
-          >
-            {showMore ? "عرض أقل" : "عرض المزيد"}
-            {showMore ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
-          </Button>
-        </div>
-      </div>
-      <ul className="scroll-pt-6">
-        {catalogueItems?.map((category) => (
+      <ul>
+        {catalogueItems.map((category) => (
           <div
-            className="border p-4 rounded-lg mb-6 bg-white relative z-20"
+            className="border p-4 rounded-lg mb-6 bg-background relative z-20"
             key={category._id}
-            id={category._id}
           >
-            <li key={category._id} className="mb-4">
-              <Link
-                href={`/catalogue/${category.category_en}`}
-                className="text-lg font-semibold text-[#374151] hover:underline"
-              >
+            <li className="mb-4">
+              <h2 className="text-lg font-semibold text-[#374151] dark:text-foreground hover:underline">
                 {category.category_ar} - ({category.category_en})
-              </Link>
+              </h2>
             </li>
             <ul className="ml-4">
               {category.products.map((product) => (
-                <li key={product._id} className="mb-2 text-gray-500">
-                  {product.typeArabic}
+                <li
+                  key={product._id}
+                  className="mb-2 text-gray-500 flex flex-row items-center justify-between"
+                >
+                  <div className="flex flex-row gap-1 items-center">
+                    {product.productImg ? (
+                      <Image
+                        src="/images/error-img.jpg"
+                        width={80}
+                        height={80}
+                        alt={product.typeArabic}
+                        style={{
+                          objectFit: "cover",
+                          width: "50px",
+                          height: "50px",
+                          borderTopRightRadius: "10px",
+                          borderBottomRightRadius: "10px",
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    <span>{product.typeArabic}</span>
+                  </div>
+
+                  <button onClick={() => handleAdd(product._id)}>
+                    {addedItems[product._id] ? (
+                      <MinusIcon className="p-1 rounded-full bg-primary text-white" />
+                    ) : (
+                      <PlusIcon className="p-1 rounded-full bg-primary text-white" />
+                    )}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
         ))}
+      </ul>
+
+      {/* Pagination */}
+      <div className="flex justify-center gap-4 mt-10">
+        {currentPage > 1 && (
+          <Button asChild>
+            <Link href={`/catalogue/${currentPage - 1}`}>الصفحة السابقة</Link>
+          </Button>
+        )}
+        {currentPage < totalPages && (
+          <Button asChild>
+            <Link href={`/catalogue/${currentPage + 1}`}>الصفحة التالية</Link>
+          </Button>
+        )}
+      </div>
+
+      {/* Scroll to Top Button */}
+      {isVisible && (
         <button
           onClick={scrollToTop}
           style={{
             position: "fixed",
             bottom: "20px",
             right: "20px",
-            display: isVisible ? "block" : "none",
-            // Add your desired styling here
-            zIndex: "30",
+            zIndex: 30,
             backgroundColor: "var(--accent)",
             padding: "10px",
             borderRadius: "10000px",
@@ -109,7 +132,7 @@ export default function ClientCatalogue({
         >
           <ArrowUp color="#fff" />
         </button>
-      </ul>
+      )}
     </>
   );
 }

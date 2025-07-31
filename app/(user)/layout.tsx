@@ -17,16 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem
-      disableTransitionOnChange
-    >
+    <>
       <NavigationBar />
       <main dir="rtl" className={`relative mx-auto p-0 m-0`}>
         {children}
       </main>
-    </ThemeProvider>
+    </>
   );
 }

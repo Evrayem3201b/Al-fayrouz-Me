@@ -7,7 +7,7 @@ import Form from "next/form";
 
 export default function ContactUs() {
   function handleWhatsappClick() {
-    var phoneNumber = "+201008303207";
+    var phoneNumber = "+201015729747";
     var name =
       (document.querySelector("#name") as HTMLInputElement | null)?.value || "";
     var company =

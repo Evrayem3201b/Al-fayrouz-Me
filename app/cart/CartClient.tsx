@@ -63,7 +63,7 @@ export default function CartClient({ searchParams }: any) {
       (document.querySelector("#emailcart") as HTMLInputElement | null)
         ?.value || "";
 
-    const phoneNumber = "201008303207";
+    const phoneNumber = "201015729747";
     const fullMessage = `
 الاسم: ${name}
 الشركة: ${company}

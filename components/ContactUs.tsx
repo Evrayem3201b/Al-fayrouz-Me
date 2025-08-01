@@ -7,42 +7,32 @@ import Form from "next/form";
 
 export default function ContactUs() {
   function handleWhatsappClick() {
-    const form = document.querySelector("form");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        var phoneNumber = "+201008303207";
-        var name =
-          (document.querySelector("#name") as HTMLInputElement | null)?.value ||
-          "";
-        var company =
-          (document.querySelector("#company") as HTMLInputElement | null)
-            ?.value || "";
-        var phone =
-          (document.querySelector("#phone") as HTMLInputElement | null)
-            ?.value || "";
-        var email =
-          (document.querySelector("#email") as HTMLInputElement | null)
-            ?.value || "";
-        var equipmentModel =
-          (
-            document.querySelector(
-              "#equipment-model"
-            ) as HTMLInputElement | null
-          )?.value || "";
-        var partNeeded =
-          (document.querySelector("#part-needed") as HTMLInputElement | null)
-            ?.value || "";
-        var message =
-          (document.querySelector("#message") as HTMLTextAreaElement | null)
-            ?.value || "";
+    var phoneNumber = "+201008303207";
+    var name =
+      (document.querySelector("#name") as HTMLInputElement | null)?.value || "";
+    var company =
+      (document.querySelector("#company") as HTMLInputElement | null)?.value ||
+      "";
+    var phone =
+      (document.querySelector("#phone") as HTMLInputElement | null)?.value ||
+      "";
+    var email =
+      (document.querySelector("#email") as HTMLInputElement | null)?.value ||
+      "";
+    var equipmentModel =
+      (document.querySelector("#equipment-model") as HTMLInputElement | null)
+        ?.value || "";
+    var partNeeded =
+      (document.querySelector("#part-needed") as HTMLInputElement | null)
+        ?.value || "";
+    var message =
+      (document.querySelector("#message") as HTMLTextAreaElement | null)
+        ?.value || "";
 
-        var messageUrl = `https://wa.me/${phoneNumber}?text=الاسم كامل:${name}%0aالشركة:${company}%0aالرقم:${phone}%0aالايميل:${email}%0aموديل المعدات:${equipmentModel}%0aالقطعة المطلوبة:${partNeeded}%0aالرسالة:${message}%0a%0a`;
-        const win = window.open(messageUrl, "_blank");
-        if (win) {
-          win.focus();
-        }
-      });
+    var messageUrl = `https://wa.me/${phoneNumber}?text=الاسم كامل:${name}%0aالشركة:${company}%0aالرقم:${phone}%0aالايميل:${email}%0aموديل المعدات:${equipmentModel}%0aالقطعة المطلوبة:${partNeeded}%0aالرسالة:${message}%0a%0a`;
+    const win = window.open(messageUrl, "_blank");
+    if (win) {
+      win.focus();
     }
   }
 
@@ -64,8 +54,8 @@ export default function ContactUs() {
           <div className="flex items-center gap-4 justify-end">
             <div>
               <p className="font-semibold text-foreground">الدعم الفني</p>
-              <Link href="tel:01008303207" className="text-muted-foreground">
-                0100-8303-207
+              <Link href="tel:01015729747" className="text-muted-foreground">
+                0101-572-9747
               </Link>
             </div>
             <Phone className="h-6 w-6 text-accent" />
@@ -93,10 +83,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      <Form
-        className="relative mx-auto flex w-full max-w-2xl flex-col items-end gap-4 overflow-hidden rounded-3xl border border-border bg-card p-4 sm:p-10"
-        action={""}
-      >
+      <div className="relative mx-auto flex w-full max-w-2xl flex-col items-end gap-4 overflow-hidden rounded-3xl border border-border bg-card p-4 sm:p-10">
         <Grid size={20} />
         <div className="relative z-20 mb-4 w-full">
           <label
@@ -210,7 +197,7 @@ export default function ContactUs() {
         >
           إرسال الطلب بواسطة البريد الإلكتروني
         </button> */}
-      </Form>
+      </div>
     </div>
   );
 }

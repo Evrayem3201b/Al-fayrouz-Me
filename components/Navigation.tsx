@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
+import { useShoppingCart } from "use-shopping-cart";
+import { Button } from "./ui/button";
 
 const tajawal = localFont({
   src: "../public/fonts/Tajawal-Regular.ttf",
@@ -14,7 +16,7 @@ const tajawal = localFont({
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "الرئيسية" },
-  { href: "/catalogue/page/1", label: "الكاتالوج" },
+  { href: "/catalogue/1", label: "الكاتالوج" },
   { href: "/search", label: "البحث" },
 ];
 
@@ -24,6 +26,8 @@ export default function NavigationBar() {
     setMenuState(!menuOpen);
   };
   const pathname = usePathname();
+  const { cartDetails } = useShoppingCart();
+
   return (
     <header
       className={`${tajawal.className} flex flex-col border-b px-4 md:px-6 max-w-4xl mx-auto`}
@@ -31,25 +35,27 @@ export default function NavigationBar() {
     >
       <div className="flex h-16 items-center justify-between gap-4">
         {/* Left side */}
-        <div className="flex items-center gap-2 max-md:w-full">
-          <div className="flex items-center gap-6 max-md:justify-between max-md:w-full ">
+        <div className="flex items-center gap-2 w-full">
+          <div className="flex items-center gap-6 justify-between w-full ">
             {/* Navigation menu */}
-            <Link href="/" className="text-primary hover:text-primary/90">
-              <Logo />
-            </Link>
-            <nav className="max-md:hidden">
-              <ul className="flex gap-5">
-                {navigationLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className={`text-muted-foreground hover:text-primary py-1.5 font-medium text-lg ${pathname === link.href ? "text-primary" : ""}`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </ul>
-            </nav>
+            <div className="flex flex-row items-center gap-5">
+              <Link href="/" className="text-primary hover:text-primary/90">
+                <Logo />
+              </Link>
+              <nav className="max-md:hidden">
+                <ul className="flex gap-5">
+                  {navigationLinks.map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      className={`text-muted-foreground hover:text-primary py-1.5 font-medium text-lg ${pathname === link.href ? "text-primary" : ""}`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </ul>
+              </nav>
+            </div>
             <nav
               className={`${menuOpen ? "flex" : "hidden"} z-30 gap-3 text-lg top-[55px] left-0 ml-[11px] flex-col absolute bg-background border p-4 rounded-md`}
             >
@@ -66,12 +72,19 @@ export default function NavigationBar() {
                 ))}
               </ul>
               <hr className="" />
-              <div className="flex flex-row items-center justify-evenly">
-                <ModeToggle style="ghost" perimeter="." />
-                <ShoppingCartIcon className="text-foreground size-4 hover:bg-accent hover:text-accent-foreground" />
-              </div>
+              <div className="flex flex-row items-center justify-evenly"></div>
             </nav>
-            <MenuIcon onClick={toggleMenu} size={22} className="md:hidden" />
+            <div className="flex flex-row items-center gap-2">
+              <Button
+                variant="outline"
+                className="hover:bg-gray-100 cursor-pointer"
+              >
+                <Link href={"/cart"}>
+                  <ShoppingCartIcon className="text-foreground size-4" />
+                </Link>
+              </Button>
+              <MenuIcon onClick={toggleMenu} size={22} className="md:hidden" />
+            </div>
           </div>
         </div>
       </div>

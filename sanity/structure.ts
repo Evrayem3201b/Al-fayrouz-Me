@@ -2,33 +2,36 @@ import type { StructureResolver } from "sanity/structure";
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("Admin Panel")
+    .title("لوحة الادارة")
     .items([
       S.listItem()
-        .title("Testimonials")
-        .child(S.documentTypeList("testimonials").title("Testimonials")),
+        .title("عرض كل المنتجات")
+        .child(S.documentTypeList("products").title("المنتجات")),
       S.listItem()
-        .title("Dashboard")
+        .title("المراجعات")
+        .child(S.documentTypeList("testimonials").title("المراجعات")),
+      S.listItem()
+        .title("لوحة القيادة")
         .child(
           S.documentTypeList("categories")
-            .title("Categories")
+            .title("الاصناف")
             .child((categoryId) =>
               S.list()
-                .title("Category Details")
+                .title("تعديل الاصناف و المنتجات")
                 .items([
                   S.listItem()
-                    .title("Edit Category")
+                    .title("تعديل الصنف")
                     .child(
                       S.document()
                         .documentId(categoryId)
                         .schemaType("categories")
-                        .title("Edit Category")
+                        .title("تعديل الصنف")
                     ),
                   S.listItem()
-                    .title("View Products")
+                    .title("عرض المنتجات")
                     .child(
                       S.documentTypeList("products")
-                        .title("Products")
+                        .title("المنتجات")
                         .filter(`category._ref == $categoryId`)
                         .params({ categoryId })
                     ),

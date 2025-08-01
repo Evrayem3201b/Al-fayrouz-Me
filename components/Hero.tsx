@@ -31,16 +31,16 @@ export default function SplitWithScreenshot() {
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-19 sm:pb-32 lg:flex lg:items-center lg:px-8 lg:py-40">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:shrink-0 lg:pt-8 prose lg:prose-xl">
           <h1 className="mt-20 text-5xl font-semibold tracking-tight !text-[#374151] sm:text-7xl">
-            قطع غيار احترافية لمعدات المطابخ والمغاسل الصناعية
+            قطع غيار احترافية لمعدات المطابخ والمغاسل و المزيد
           </h1>
           <p className="mt-8 text-lg font-medium !text-muted-foreground sm:text-xl sm:leading-8">
-            قطع أصلية وبديلة لأفران ومغاسل وغسالات وثلاجات المطاعم. شحن سريع.
-            دعم فني متخصص.
+            قطع أصلية وبديلة لأفران ومغاسل وغسالات وثلاجات المطاعم. دعم فني
+            متخصص.
           </p>
           <SearchComp styling="mt-11" />
           <div className="not-prose mt-5 flex items-center gap-x-6">
             <Link
-              href="/catalogue"
+              href="/catalogue/1"
               className="rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-[#252525] shadow-sm hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               تصفح الكتالوج

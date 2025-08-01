@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { useShoppingCart } from "use-shopping-cart";
 
 type CategoryType = {
   _id: string;
@@ -42,6 +43,26 @@ export default function ClientCatalogue({
       ...prev,
       [id]: !prev[id],
     }));
+  };
+
+  const { addItem, removeItem, cartDetails } = useShoppingCart();
+
+  const isInCart = (id: string) => !!cartDetails?.[id];
+
+  const handleAddOrRemove = (product: any) => {
+    const item = {
+      id: product._id,
+      name: product.typeArabic,
+      price: 0, // if you're not charging, set price to 0
+      currency: "USD", // required even if 0
+      image: product.productImg || "",
+    };
+
+    if (isInCart(product._id)) {
+      removeItem(product._id);
+    } else {
+      addItem(item);
+    }
   };
 
   return (
@@ -88,8 +109,8 @@ export default function ClientCatalogue({
                     <span>{product.typeArabic}</span>
                   </div>
 
-                  <button onClick={() => handleAdd(product._id)}>
-                    {addedItems[product._id] ? (
+                  <button onClick={() => handleAddOrRemove(product)}>
+                    {isInCart(product._id) ? (
                       <MinusIcon className="p-1 rounded-full bg-primary text-white" />
                     ) : (
                       <PlusIcon className="p-1 rounded-full bg-primary text-white" />
